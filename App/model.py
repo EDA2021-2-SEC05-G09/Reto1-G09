@@ -37,7 +37,18 @@ los mismos.
 
 # Construccion de modelos
 
+def newCatalog():
+  
+    catalog = {"nombres":None}
+
+    catalog['nombres'] = lt.newList()
+ 
+
+    return catalog
+
 # Funciones para agregar informacion al catalogo
+def addNombre(catalog, nombre):
+    lt.addLast(catalog['nombres'], nombre)
 
 # Funciones para creacion de datos
 
