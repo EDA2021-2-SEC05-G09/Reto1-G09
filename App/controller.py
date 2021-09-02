@@ -37,6 +37,9 @@ def initCatalog():
 # Funciones para la carga de datos
 def loadData(catalog):
     loadNombres(catalog)
+    loadFechaNacimiento(catalog)
+    loadNacionalidad(catalog)
+    loadGenero(catalog)
 
 
 def loadNombres(catalog):
@@ -44,6 +47,24 @@ def loadNombres(catalog):
     input_file = csv.DictReader(open(nombresfile, encoding='utf-8'))
     for nombre in input_file:
         model.addNombre(catalog, nombre)
+
+def loadFechaNacimiento(catalog):
+    fechanacimientofile = cf.data_dir + 'MoMA/Artists-utf8-small.csv'
+    input_file = csv.DictReader(open(fechanacimientofile, encoding='utf-8'))
+    for nacimiento in input_file:
+        model.addFechaNacimiento(catalog, nacimiento)
+
+def loadNacionalidad(catalog):
+    Nacionalidadfile = cf.data_dir + 'MoMA/Artists-utf8-small.csv'
+    input_file = csv.DictReader(open(Nacionalidadfile, encoding='utf-8'))
+    for nacio in input_file:
+        model.addNacionalidad(catalog, nacio)
+
+def loadGenero(catalog):
+    Generosfile = cf.data_dir + 'MoMA/Artists-utf8-small.csv'
+    input_file = csv.DictReader(open(Generosfile, encoding='utf-8'))
+    for genero in input_file:
+        model.addGenero(catalog, genero)
 # Funciones de ordenamiento
 
 # Funciones de consulta sobre el catálogo

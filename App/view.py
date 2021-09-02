@@ -59,6 +59,9 @@ while True:
         catalog = initCatalog()
         loadData(catalog)
         print('nombres cargados: ' + str(lt.size(catalog['nombres'])))
+        print('fechas nacimientos cargados: ' + str(lt.size(catalog['fechas_nacimientos'])))
+        print('nacionalidades cargados: ' + str(lt.size(catalog['Nacionalidad'])))
+        print('generos cargados: ' + str(lt.size(catalog['Generos'])))
 
     elif int(inputs[0]) == 2:
         pass
