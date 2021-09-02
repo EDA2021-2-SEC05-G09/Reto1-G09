@@ -40,6 +40,7 @@ def loadData(catalog):
     loadFechaNacimiento(catalog)
     loadNacionalidad(catalog)
     loadGenero(catalog)
+    loadIDs(catalog)
 
 
 def loadNombres(catalog):
@@ -65,6 +66,12 @@ def loadGenero(catalog):
     input_file = csv.DictReader(open(Generosfile, encoding='utf-8'))
     for genero in input_file:
         model.addGenero(catalog, genero)
+
+def loadIDs(catalog):
+    IDsfile = cf.data_dir + 'MoMA/Artworks-utf8-small.csv'
+    input_file = csv.DictReader(open(IDsfile, encoding='utf-8'))
+    for id in input_file:
+        model.addID(catalog, id)
 # Funciones de ordenamiento
 
 # Funciones de consulta sobre el catálogo

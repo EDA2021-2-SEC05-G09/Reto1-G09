@@ -42,15 +42,20 @@ def newCatalog():
     catalog = {"nombres":None,
                "fechas_nacimientos":None,
                "Nacionalidad":None,
-               "Generos":None}
+               "Generos":None,
+               "IDs":None}
 
     catalog['nombres'] = lt.newList()
-    catalog['fechas_nacimientos'] = lt.newList()
-    catalog['Nacionalidad'] = lt.newList()
-    catalog['Generos'] = lt.newList()
+    catalog['fechas_nacimientos'] = lt.newList('ARRAY_LIST')
+    catalog['Nacionalidad'] = lt.newList('ARRAY_LIST')
+    catalog['Generos'] = lt.newList('ARRAY_LIST')
+    catalog['IDs'] = lt.newList('ARRAY_LIST')
  
-
+ 
+    
+    
     return catalog
+   
 
 # Funciones para agregar informacion al catalogo
 def addNombre(catalog, nombre):
@@ -65,6 +70,8 @@ def addNacionalidad(catalog, nacionalidad):
 def addGenero(catalog, genero):
     lt.addLast(catalog['Generos'], genero)
 
+def addID(catalog, id):
+    lt.addLast(catalog['IDs'], id)
 
 # Funciones para creacion de datos
 
