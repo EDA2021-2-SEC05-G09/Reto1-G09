@@ -39,17 +39,12 @@ los mismos.
 
 def newCatalog():
   
-    catalog = {"nombres":None,
-               "fechas_nacimientos":None,
-               "Nacionalidad":None,
-               "Generos":None,
-               "IDs":None}
+    catalog = {"Artwork": None,
+               "Artist": None}
 
-    catalog['nombres'] = lt.newList()
-    catalog['fechas_nacimientos'] = lt.newList('ARRAY_LIST')
-    catalog['Nacionalidad'] = lt.newList('ARRAY_LIST')
-    catalog['Generos'] = lt.newList('ARRAY_LIST')
-    catalog['IDs'] = lt.newList('ARRAY_LIST')
+    catalog['artists'] = lt.newList('ARRAY_LIST')
+    catalog['artworks'] = lt.newList('ARRAY_LIST')
+    
  
  
     
@@ -58,20 +53,12 @@ def newCatalog():
    
 
 # Funciones para agregar informacion al catalogo
-def addNombre(catalog, nombre):
-    lt.addLast(catalog['nombres'], nombre)
+def addArtWork(catalog, artWork):
+    lt.addLast(catalog['artworks'],artWork)
 
-def addFechaNacimiento(catalog, fecha_nacimiento):
-    lt.addLast(catalog['fechas_nacimientos'], fecha_nacimiento)
+def addArtist(catalog, Artist):
+    lt.addLast(catalog['artists'], Artist)
 
-def addNacionalidad(catalog, nacionalidad):
-    lt.addLast(catalog['Nacionalidad'], nacionalidad)
-
-def addGenero(catalog, genero):
-    lt.addLast(catalog['Generos'], genero)
-
-def addID(catalog, id):
-    lt.addLast(catalog['IDs'], id)
 
 # Funciones para creacion de datos
 

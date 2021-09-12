@@ -36,42 +36,24 @@ def initCatalog():
 
 # Funciones para la carga de datos
 def loadData(catalog):
-    loadNombres(catalog)
-    loadFechaNacimiento(catalog)
-    loadNacionalidad(catalog)
-    loadGenero(catalog)
-    loadIDs(catalog)
+    loadArtWorks(catalog)
+    loadArtists(catalog)
 
 
-def loadNombres(catalog):
-    nombresfile = cf.data_dir + 'MoMA/Artists-utf8-small.csv'
-    input_file = csv.DictReader(open(nombresfile, encoding='utf-8'))
-    for nombre in input_file:
-        model.addNombre(catalog, nombre)
 
-def loadFechaNacimiento(catalog):
-    fechanacimientofile = cf.data_dir + 'MoMA/Artists-utf8-small.csv'
-    input_file = csv.DictReader(open(fechanacimientofile, encoding='utf-8'))
-    for nacimiento in input_file:
-        model.addFechaNacimiento(catalog, nacimiento)
+def loadArtWorks(catalog):
+    artworks = cf.data_dir + 'MoMA/Artists-utf8-small.csv'
+    input_file = csv.DictReader(open(artworks, encoding='utf-8'))
+    for ARTWORK in input_file:
+        model.addArtist(catalog, ARTWORK)
 
-def loadNacionalidad(catalog):
-    Nacionalidadfile = cf.data_dir + 'MoMA/Artists-utf8-small.csv'
-    input_file = csv.DictReader(open(Nacionalidadfile, encoding='utf-8'))
-    for nacio in input_file:
-        model.addNacionalidad(catalog, nacio)
+def loadArtists(catalog):
+    artistfile = cf.data_dir + 'MoMA/Artists-utf8-small.csv'
+    input_file = csv.DictReader(open(artistfile, encoding='utf-8'))
+    for artist in input_file:
+        model.addArtWork(catalog, artist)
 
-def loadGenero(catalog):
-    Generosfile = cf.data_dir + 'MoMA/Artists-utf8-small.csv'
-    input_file = csv.DictReader(open(Generosfile, encoding='utf-8'))
-    for genero in input_file:
-        model.addGenero(catalog, genero)
 
-def loadIDs(catalog):
-    IDsfile = cf.data_dir + 'MoMA/Artworks-utf8-small.csv'
-    input_file = csv.DictReader(open(IDsfile, encoding='utf-8'))
-    for id in input_file:
-        model.addID(catalog, id)
 # Funciones de ordenamiento
 
 # Funciones de consulta sobre el catálogo
