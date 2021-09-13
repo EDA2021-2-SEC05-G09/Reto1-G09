@@ -77,12 +77,13 @@ def cmpArtworkByDateAcquired(artwork1, artwork2):
     artwork1: informacion de la primera obra que incluye su valor 'DateAcquired'
     artwork2: informacion de la segunda obra que incluye su valor 'DateAcquired'
     """
-    if artwork1["DateAcquired"]=="" or artwork2["DateAcquired"]=="":
-       ffinal=""
-    else:
-       f1=datetime.strptime(artwork1["DateAcquired"].replace("-","/"),"%Y/%m/%d" )
-       f2=datetime.strptime(artwork2["DateAcquired"].replace("-","/"),"%Y/%m/%d" )
-       ffinal=f1<f2
+    if artwork1["DateAcquired"]==""  :
+       artwork1["DateAcquired"]=("0001/01/01")
+    if artwork2["DateAcquired"]==""  :
+       artwork2["DateAcquired"]=("0001/01/01")
+    f1=datetime.strptime(artwork1["DateAcquired"].replace("-","/"),"%Y/%m/%d" )
+    f2=datetime.strptime(artwork2["DateAcquired"].replace("-","/"),"%Y/%m/%d" )
+    ffinal=f1<f2
     return ffinal
 
 

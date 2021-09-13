@@ -61,7 +61,7 @@ def loadData(catalog):
 
     controller.loadData(catalog)
 
-def printSortResults(ord_artWork, sample=10):
+def printSortResults(ord_artWork, sample=5000):
     size = lt.size(ord_artWork)
     if size > sample:
         print("Las primeras ", sample, " obras ordenadas son:")
@@ -115,9 +115,9 @@ while True:
          elif itera==ss:
              algoritmo="Shell"
             
+         printSortResults(result[1])
          print("Para la muestra de", size, " elementos, con el arreglo de "+ algoritmo +  " el tiempo (mseg) es: ",
          str(result[0]))
-         printSortResults(result[1])
 
 
     else:
