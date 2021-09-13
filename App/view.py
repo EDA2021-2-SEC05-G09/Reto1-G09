@@ -25,6 +25,10 @@ import sys
 import controller
 from DISClib.ADT import list as lt
 assert cf
+from DISClib.Algorithms.Sorting import insertionsort as iso
+from DISClib.Algorithms.Sorting import shellsort as ss
+from DISClib.Algorithms.Sorting import mergesort as ms
+from DISClib.Algorithms.Sorting import quicksort as qs
 
 
 """
@@ -45,15 +49,29 @@ def printMenu():
     print("7- Proponer una nueva exposición del museo")
     print("0- Salir")
 
-def initCatalog():
+
+def ListaTipos():
+    print("elige el tipo de lista que se desea(a:ARRAY_LIST) O (l:LINKED_LIST): ")
+
+def initCatalog(lista):
    
-    return controller.initCatalog()
+    return controller.initCatalog(lista)
 
 def loadData(catalog):
 
     controller.loadData(catalog)
 
-
+def printSortResults(ord_artWork, sample=10):
+    size = lt.size(ord_artWork)
+    if size > sample:
+        print("Las primeras ", sample, " obras ordenadas son:")
+        i=1
+        while i <= sample:
+            artWork = lt.getElement(ord_artWork,i)
+            print("Titulo: " + artWork["Title"] + "  ID: "   +
+                    artWork["ConstituentID"]  + " fecha: " +  artWork["DateAcquired"])
+            i+=1
+catalog=None
 """
 Menu principal
 """
@@ -61,15 +79,46 @@ while True:
     printMenu()
     inputs = input('Seleccione una opción para continuar\n')
     if int(inputs[0]) == 1:
+        lista= " "
+        ListaTipos()
+        Tipo=input("ingrese a o l: ")
+        if Tipo=="a":
+            lista="ARRAY_LIST"
+        elif Tipo=="b":
+            lista="LINKED_LIST"
         print("Cargando información de los archivos ....")
-        catalog = initCatalog()
+        catalog = initCatalog(lista)
         loadData(catalog)
-        print('Obras cargadas: ' + str(lt.size(catalog['artworks'])))
-        print('Autores cargados: ' + str(lt.size(catalog['artists'])))
+        print('Obras cargadas: ' + str(lt.size(catalog['Artworks'])))
+        print('Autores cargados: ' + str(lt.size(catalog['Artists'])))
 
 
     elif int(inputs[0]) == 2:
-        pass
+         itera=""
+         clase=input("ingrese tipo de ordenamiento iterativo: I:(insertion sort),M:(Merge sort),Q:(Quick Sort),S:(Shell sort): ")
+         if clase=="I":
+             itera=iso
+         elif clase=="M":
+             itera=ms
+         elif clase=="Q":
+             itera=qs
+         elif clase=="S":
+             itera=ss
+         size = input("Indique tamaño de la muestra: ")
+         result = controller.sortdate(catalog, int(size),itera)
+         if itera==iso:
+             algoritmo="insertion"
+         elif itera==ms:
+             algoritmo="Merge"
+         elif itera==qs:
+             algoritmo="Quick"
+         elif itera==ss:
+             algoritmo="Shell"
+            
+         print("Para la muestra de", size, " elementos, con el arreglo de "+ algoritmo +  " el tiempo (mseg) es: ",
+         str(result[0]))
+         printSortResults(result[1])
+
 
     else:
         sys.exit(0)
