@@ -68,6 +68,22 @@ def addArtist(catalog, Artist):
 # Funciones para creacion de datos
 
 # Funciones de consulta
+def Ayear(catalog,y1,y2):
+    artists=catalog["Artists"] 
+    final=lt.newList()
+    for cont in range(lt.size(artists)):
+        orden=lt.getElement(artists,cont)
+        date=int(orden["BeginDate"])
+        id=orden["ConstituentID"]
+        n_artist=orden["DisplayName"]
+        f_date=int(orden["EndDate"])
+        gender=orden["Gender"]
+        nationality=orden["Nationality"]
+        if date!=0 and date!=None and date >=y1 and date<=y2:
+           entonces={"nombre" : n_artist,"fecha":date, "fecha_final":f_date,"genero":gender,"nacionalidad":nationality,"id":id}
+           lt.addLast(final, entonces)
+    me.sort(final,cmpastistsBydate)
+    return final
 
 # Funciones utilizadas para comparar elementos dentro de una lista 
 def cmpArtworkByDateAcquired(artwork1, artwork2):
@@ -86,6 +102,9 @@ def cmpArtworkByDateAcquired(artwork1, artwork2):
     ffinal=f1<f2
     return ffinal
 
+def cmpastistsBydate(artist1, artist2):
+
+    return artist1["fecha"] < artist2["fecha"]
 
 # Funciones de ordenamiento
 def sortdate(catalog, size, itera):

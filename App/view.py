@@ -72,6 +72,22 @@ def printSortResults(ord_artWork, sample=5000):
                     artWork["ConstituentID"]  + " fecha: " +  artWork["DateAcquired"])
             i+=1
 catalog=None
+def printAyear(catalog):
+    size=lt.size(catalog)
+    artistas1 = lt.getElement(catalog, 1)
+    print("id: "+ artistas1["id"]+", nombre: "+artistas1["nombre"] + " , fecha nacimiento: " + str(artistas1["fecha"]) + " , genero: "+  artistas1["genero"] + " , nacionalidad:"  +artistas1["nacionalidad"])
+    artistas2 = lt.getElement(catalog, 2)
+    print("id: "+ artistas2["id"]+", nombre: "+artistas2["nombre"] + " , fecha nacimiento: " + str(artistas2["fecha"]) + " , genero: "+  artistas2["genero"] + " , nacionalidad:"  +artistas2["nacionalidad"])
+    artistas3 = lt.getElement(catalog, 3)
+    print("id: "+ artistas3["id"]+", nombre: "+artistas3["nombre"] + " , fecha nacimiento: " + str(artistas3["fecha"]) + " , genero: "+  artistas3["genero"] + " , nacionalidad:"  +artistas3["nacionalidad"])
+
+    artistas1a = lt.getElement(catalog, size - 1)
+    print("id: "+ artistas1a["id"]+", nombre: "+artistas1a["nombre"] + " , fecha nacimiento: " + str(artistas1a["fecha"]) + " , genero: "+  artistas1a["genero"] + " , nacionalidad:"  +artistas1a["nacionalidad"])
+    artistas2a = lt.getElement(catalog, size - 2)
+    print("id: "+ artistas2a["id"]+", nombre: "+artistas2a["nombre"] + " , fecha nacimiento: " + str(artistas2a["fecha"]) + " , genero: "+  artistas2a["genero"] + " , nacionalidad:"  +artistas2a["nacionalidad"])
+    artistas3a = lt.getElement(catalog, size - 3)
+    print("id: "+ artistas3a["id"]+", nombre: "+artistas3a["nombre"] + " , fecha nacimiento: " + str(artistas3a["fecha"]) + " , genero: "+  artistas3a["genero"] + " , nacionalidad:"  +artistas3a["nacionalidad"])
+  
 """
 Menu principal
 """
@@ -94,6 +110,16 @@ while True:
 
 
     elif int(inputs[0]) == 2:
+
+     
+        y1 = int(input("Ingrese primer año:  "))
+        y2 = int(input("Ingrese segundo año:  "))
+        
+
+        cantidadArtistas = controller.Ayear(catalog,y1,y2)
+        printAyear(cantidadArtistas)
+
+    elif int(inputs[0]) == 3:
          itera=""
          clase=input("ingrese tipo de ordenamiento iterativo: I:(insertion sort),M:(Merge sort),Q:(Quick Sort),S:(Shell sort): ")
          if clase=="I":
