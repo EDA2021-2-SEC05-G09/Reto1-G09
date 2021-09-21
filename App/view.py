@@ -75,11 +75,11 @@ catalog=None
 def printAyear(catalog):
     size=lt.size(catalog)
     artistas1 = lt.getElement(catalog, 1)
-    print("id: "+ artistas1["id"]+", nombre: "+artistas1["nombre"] + " , fecha nacimiento: " + str(artistas1["fecha"]) + " , genero: "+  artistas1["genero"] + " , nacionalidad:"  +artistas1["nacionalidad"])
+    print("id: "+ artistas1["id"]+", nombre: "+artistas1["nombre"] + " , fecha nacimiento: " + str(artistas1["fecha"]) + " , genero: "+  artistas1["genero"] + " , nacionalidad: "  +artistas1["nacionalidad"])
     artistas2 = lt.getElement(catalog, 2)
-    print("id: "+ artistas2["id"]+", nombre: "+artistas2["nombre"] + " , fecha nacimiento: " + str(artistas2["fecha"]) + " , genero: "+  artistas2["genero"] + " , nacionalidad:"  +artistas2["nacionalidad"])
+    print("id: "+ artistas2["id"]+", nombre: "+artistas2["nombre"] + " , fecha nacimiento: " + str(artistas2["fecha"]) + " , genero: "+  artistas2["genero"] + " , nacionalidad: "  +artistas2["nacionalidad"])
     artistas3 = lt.getElement(catalog, 3)
-    print("id: "+ artistas3["id"]+", nombre: "+artistas3["nombre"] + " , fecha nacimiento: " + str(artistas3["fecha"]) + " , genero: "+  artistas3["genero"] + " , nacionalidad:"  +artistas3["nacionalidad"])
+    print("id: "+ artistas3["id"]+", nombre: "+artistas3["nombre"] + " , fecha nacimiento: " + str(artistas3["fecha"]) + " , genero: "+  artistas3["genero"] + " , nacionalidad: "  +artistas3["nacionalidad"])
 
     artistas1a = lt.getElement(catalog, size - 1)
     print("id: "+ artistas1a["id"]+", nombre: "+artistas1a["nombre"] + " , fecha nacimiento: " + str(artistas1a["fecha"]) + " , genero: "+  artistas1a["genero"] + " , nacionalidad:"  +artistas1a["nacionalidad"])

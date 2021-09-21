@@ -77,8 +77,15 @@ def Ayear(catalog,y1,y2):
         id=orden["ConstituentID"]
         n_artist=orden["DisplayName"]
         f_date=int(orden["EndDate"])
-        gender=orden["Gender"]
         nationality=orden["Nationality"]
+        if orden["Gender"]=="":
+                 gender="desconocido"
+        else:
+            gender=orden["Gender"]
+        if orden["Nationality"]=="":
+                nationality="desconocido"
+        else:
+            nationality=orden["Nationality"]
         if date!=0 and date!=None and date >=y1 and date<=y2:
            entonces={"nombre" : n_artist,"fecha":date, "fecha_final":f_date,"genero":gender,"nacionalidad":nationality,"id":id}
            lt.addLast(final, entonces)
