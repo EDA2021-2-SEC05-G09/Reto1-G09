@@ -59,10 +59,12 @@ def newCatalog(lista):
 
 # Funciones para agregar informacion al catalogo
 def addArtWork(catalog, artWork):
-    lt.addLast(catalog['Artworks'],artWork)
+    dicci={'name':artWork['Title'],'dateacquired':artWork['DateAcquired'],'constituentid':artWork['ConstituentID'],'date':artWork['Date'],'medium':artWork['Medium'],'dimensions':artWork['Dimensions'],'department':artWork['Department'],'creditline':artWork['CreditLine'],'classification':artWork['Classification']}
+    lt.addLast(catalog['Artworks'],dicci)
 
 def addArtist(catalog, Artist):
-    lt.addLast(catalog['Artists'], Artist)
+    dicci={'Name':Artist['DisplayName'],'BeginDate':Artist['BeginDate'],'EndDate':Artist['EndDate'],'Nationality':Artist['Nationality'],'Gender':Artist['Gender'],'ConstituentID':Artist['ConstituentID']}
+    lt.addLast(catalog['Artists'], dicci)
 
 
 # Funciones para creacion de datos
@@ -75,7 +77,7 @@ def Ayear(catalog,y1,y2):
         orden=lt.getElement(artists,cont)
         date=int(orden["BeginDate"])
         id=orden["ConstituentID"]
-        n_artist=orden["DisplayName"]
+        n_artist=orden["Name"]
         f_date=int(orden["EndDate"])
         nationality=orden["Nationality"]
         if orden["Gender"]=="":
@@ -92,6 +94,36 @@ def Ayear(catalog,y1,y2):
     me.sort(final,cmpastistsBydate)
     return final
 
+def Tecnicaartistas(catalog,nombre):
+    Tecnicas=lt.newList()
+    tecnicamas=lt.newList()
+    valor=0
+    cid=0
+    dicci={}
+    for a in lt.iterator(catalog["Artists"]):
+        if nombre==a["Name"]:
+            cid=a["ConstituentID"]
+    
+    for b in lt.iterator(catalog["Artworks"]):
+        veces=0
+        if "["+cid+"]"==b["constituentid"]:
+            valor+=1
+            lt.addLast(Tecnicas, b)
+            for c in lt.iterator(Tecnicas):
+                if c["medium"] in b["medium"]:
+                   veces+=1
+                   dicci[c["medium"]]=veces
+    maximo=max(dicci.values())
+    indexmayor=str(list(dicci.keys())[list(dicci.values()).index(maximo)])
+
+
+    for d in range(lt.size(Tecnicas)):
+        orden=lt.getElement(Tecnicas,d)
+        if orden["medium"]==indexmayor:
+             lt.addLast(tecnicamas,orden)
+    
+    tamaño=len(dicci)
+    return valor,tamaño,indexmayor,tecnicamas
 # Funciones utilizadas para comparar elementos dentro de una lista 
 def cmpArtworkByDateAcquired(artwork1, artwork2):
     """

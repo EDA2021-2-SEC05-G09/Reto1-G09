@@ -1,6 +1,17 @@
+import config as cf
+import time
+from DISClib.ADT import list as lt
+from DISClib.Algorithms.Sorting import insertionsort as iso
+from DISClib.Algorithms.Sorting import shellsort as sa
+from DISClib.Algorithms.Sorting import mergesort as me
+from DISClib.Algorithms.Sorting import quicksort as qs
+assert cf
 from datetime import datetime
 
-f1=datetime.strptime("2018/02/12","%Y/%m/%d" )
-f2=datetime.strptime("1958/12/10","%Y/%m/%d" )
-b=f1<f2
-print(b)
+Tecnicas=lt.newList()
+a={}
+a["hola"]=1
+a["adios"]=2
+b=max(a.values())
+indexmayor=str(list(a.keys())[list(a.values()).index(b)])
+print(a)

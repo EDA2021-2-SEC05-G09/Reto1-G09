@@ -74,6 +74,7 @@ def printSortResults(ord_artWork, sample=5000):
 catalog=None
 def printAyear(catalog):
     size=lt.size(catalog)
+                                                                                             
     artistas1 = lt.getElement(catalog, 1)
     print("id: "+ artistas1["id"]+", nombre: "+artistas1["nombre"] + " , fecha nacimiento: " + str(artistas1["fecha"]) + " , genero: "+  artistas1["genero"] + " , nacionalidad: "  +artistas1["nacionalidad"])
     artistas2 = lt.getElement(catalog, 2)
@@ -87,7 +88,14 @@ def printAyear(catalog):
     print("id: "+ artistas2a["id"]+", nombre: "+artistas2a["nombre"] + " , fecha nacimiento: " + str(artistas2a["fecha"]) + " , genero: "+  artistas2a["genero"] + " , nacionalidad:"  +artistas2a["nacionalidad"])
     artistas3a = lt.getElement(catalog, size - 3)
     print("id: "+ artistas3a["id"]+", nombre: "+artistas3a["nombre"] + " , fecha nacimiento: " + str(artistas3a["fecha"]) + " , genero: "+  artistas3a["genero"] + " , nacionalidad:"  +artistas3a["nacionalidad"])
-  
+                                                                                            
+
+def ObrasTecnica(valor,tamaño,maximo,tecnicamas):
+    print("el artista tiene: "+str(valor) + " obras en el museo")
+    print("el artista cuenta con: "+str(tamaño)+ " tecnicas diferentes")
+    print("su tecnica mas usada es: "+str(maximo))
+    for e in lt.iterator(tecnicamas):
+        print("id: " +e["constituentid"]+" obra: "+e['name']+" medio: "+e['medium']+" Fecha: "+e['date']+" dimensiones: "+e['dimensions'])
 """
 Menu principal
 """
@@ -115,9 +123,16 @@ while True:
         y1 = int(input("Ingrese primer año:  "))
         y2 = int(input("Ingrese segundo año:  "))
         
-
+        
         cantidadArtistas = controller.Ayear(catalog,y1,y2)
+        print("                                                                                            ")
+        print("============================================================================================")
+        print("                                                                                            ")
         printAyear(cantidadArtistas)
+        print("                                                                                            ")
+        print("============================================================================================")
+        print("                                                                                            ")
+                                                                                            
 
     elif int(inputs[0]) == 3:
          itera=""
@@ -144,6 +159,17 @@ while True:
          printSortResults(result[1])
          print("Para la muestra de", size, " elementos, con el arreglo de "+ algoritmo +  " el tiempo (mseg) es: ",
          str(result[0]))
+    
+    elif int(inputs[0]) == 4:
+        nombre=input("ingrese nombre del artista: ")
+        valor,tamaño,maximo,tecnicamas=controller.Tecnicaartistas(catalog,nombre)
+        print("                                                                                            ")
+        print("============================================================================================")
+        print("                                                                                            ")
+        ObrasTecnica(valor,tamaño,maximo,tecnicamas)
+        print("                                                                                            ")
+        print("============================================================================================")
+        print("                                                                                            ")
 
 
     else:
