@@ -89,6 +89,22 @@ def printAyear(catalog):
     artistas3a = lt.getElement(catalog, size - 3)
     print("id: "+ artistas3a["id"]+", nombre: "+artistas3a["nombre"] + " , fecha nacimiento: " + str(artistas3a["fecha"]) + " , genero: "+  artistas3a["genero"] + " , nacionalidad:"  +artistas3a["nacionalidad"])
                                                                                             
+def printOyear(catalog):
+    size=lt.size(catalog)
+                                                                                             
+    obras1 = lt.getElement(catalog, 1)
+    print("nombre: "+obras1["nombre"] +" id: "+obras1["id"]  +" artista: "+obras1["artista"] + " , fecha: " + str(obras1["fecha"]) + ", fecha adquicision: "+ obras1["dateacquired"]+ ", medio: "+  obras1["medio"] + " , dimensiones: "  +obras1["dimensiones"])
+    obras2 = lt.getElement(catalog, 2)
+    print("nombre: "+obras2["nombre"] + " id: "+obras2["id"]  +" artista: "+obras2["artista"] +" , fecha: " + str(obras2["fecha"]) + ", fecha adquicision: "+obras2["dateacquired"]+" , medio: "+  obras2["medio"] + " , dimensiones: "  +obras2["dimensiones"])
+    obras3 = lt.getElement(catalog, 3)
+    print("nombre: "+obras3["nombre"] + " id: "+obras3["id"]  +" artista: "+obras3["artista"] +" , fecha: " + str(obras3["fecha"]) +", fecha adquicision: "+obras3["dateacquired"]+ " , medio: "+  obras3["medio"] + " , dimensiones: "  +obras3["dimensiones"])
+
+    obras1a = lt.getElement(catalog, size - 1)
+    print("nombre: "+obras1a["nombre"] + " id: "+obras1a["id"]  +" artista: "+obras1a["artista"] +" , fecha: " + str(obras1a["fecha"]) +", fecha adquicision: "+obras1a["dateacquired"]+ " , medio: "+  obras1a["medio"] + " , dimensiones:"  +obras1a["dimensiones"])
+    obras2a = lt.getElement(catalog, size - 2)
+    print("nombre: "+obras2a["nombre"] + " id: "+obras2a["id"]  +" artista: "+obras2a["artista"] +" , fecha: " + str(obras2a["fecha"]) +", fecha adquicision: "+obras2a["dateacquired"]+ " , medio: "+  obras2a["medio"] + " , dimensiones:"  +obras2a["dimensiones"])
+    obras3a = lt.getElement(catalog, size - 3)
+    print("nombre: "+obras3a["nombre"] + " id: "+obras3a["id"]  +" artista: "+obras3a["artista"] +" , fecha: " + str(obras3a["fecha"]) +", fecha adquicision: "+obras3a["dateacquired"]+ " , medio: "+  obras3a["medio"] + " , dimensiones:"  +obras3a["dimensiones"])
 
 def ObrasTecnica(valor,tamaño,maximo,tecnicamas):
     print("el artista tiene: "+str(valor) + " obras en el museo")
@@ -159,6 +175,16 @@ while True:
          printSortResults(result[1])
          print("Para la muestra de", size, " elementos, con el arreglo de "+ algoritmo +  " el tiempo (mseg) es: ",
          str(result[0]))
+         y1 = str(input("Ingrese primer año(AAAA-MM-DD):  "))
+         y2 = str(input("Ingrese segundo año(AAAA-MM-DD):  "))
+         cantidadObras = controller.Oyear(catalog,y1,y2)
+         print("                                                                                            ")
+         print("============================================================================================")
+         print("                                                                                            ")
+         printOyear(cantidadObras)
+         print("                                                                                            ")
+         print("============================================================================================")
+         print("                                                                                            ")
     
     elif int(inputs[0]) == 4:
         nombre=input("ingrese nombre del artista: ")

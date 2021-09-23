@@ -9,9 +9,6 @@ assert cf
 from datetime import datetime
 
 Tecnicas=lt.newList()
-a={}
-a["hola"]=1
-a["adios"]=2
-b=max(a.values())
-indexmayor=str(list(a.keys())[list(a.values()).index(b)])
+a="["+str(2)+"]"
 print(a)
+print(type(a))

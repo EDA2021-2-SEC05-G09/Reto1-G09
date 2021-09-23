@@ -66,6 +66,10 @@ def Ayear(catalog,y1,y2):
     
     return model.Ayear(catalog,y1,y2)
 
+def Oyear(catalog,y1,y2):
+    
+    return model.Oyear(catalog,y1,y2)
+
 def Tecnicaartistas(catalog,nombre):
 
     return model.Tecnicaartistas(catalog,nombre)

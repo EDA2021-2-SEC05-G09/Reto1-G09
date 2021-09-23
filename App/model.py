@@ -94,6 +94,29 @@ def Ayear(catalog,y1,y2):
     me.sort(final,cmpastistsBydate)
     return final
 
+def Oyear(catalog,y1,y2):
+    obras=catalog["Artworks"] 
+    artistas=catalog["Artists"]
+    final=lt.newList()
+
+    for cont in range(lt.size(obras)):
+        orden=lt.getElement(obras,cont)
+        nombre=orden["name"]
+        fecha=orden["date"]
+        fechaadqui=orden["dateacquired"]
+        medio=orden["medium"]
+        dimensiones=orden["dimensions"]
+        id=orden["constituentid"]
+        for cont2 in range(lt.size(artistas)):
+            orden2=lt.getElement(artistas,cont2)
+            id2=orden2["ConstituentID"]
+            if id=="["+id2+"]":
+                artista=orden2["Name"]
+        if fechaadqui!=0 and fechaadqui!=None and fechaadqui >=y1 and fechaadqui<=y2:
+               entonces={"nombre" : nombre,"artista":artista,"id":id,"dateacquired":fechaadqui,"fecha":fecha, "medio":medio,"dimensiones":dimensiones}
+               lt.addLast(final, entonces)
+    me.sort(final,cmpArtworkByDateAcquired)
+    return final
 def Tecnicaartistas(catalog,nombre):
     Tecnicas=lt.newList()
     tecnicamas=lt.newList()
@@ -132,18 +155,23 @@ def cmpArtworkByDateAcquired(artwork1, artwork2):
     artwork1: informacion de la primera obra que incluye su valor 'DateAcquired'
     artwork2: informacion de la segunda obra que incluye su valor 'DateAcquired'
     """
-    if artwork1["DateAcquired"]==""  :
-       artwork1["DateAcquired"]=("0001/01/01")
-    if artwork2["DateAcquired"]==""  :
-       artwork2["DateAcquired"]=("0001/01/01")
-    f1=datetime.strptime(artwork1["DateAcquired"].replace("-","/"),"%Y/%m/%d" )
-    f2=datetime.strptime(artwork2["DateAcquired"].replace("-","/"),"%Y/%m/%d" )
+    if artwork1["dateacquired"]==""  :
+       artwork1["dateacquired"]=("0001/01/01")
+    if artwork2["dateacquired"]==""  :
+       artwork2["dateacquired"]=("0001/01/01")
+    f1=datetime.strptime(artwork1["dateacquired"].replace("-","/"),"%Y/%m/%d" )
+    f2=datetime.strptime(artwork2["dateacquired"].replace("-","/"),"%Y/%m/%d" )
     ffinal=f1<f2
     return ffinal
 
 def cmpastistsBydate(artist1, artist2):
 
     return artist1["fecha"] < artist2["fecha"]
+
+
+def cmptittleBydate(tittle1, tittle2):
+
+    return tittle1["fecha"] < tittle2["fecha"]
 
 # Funciones de ordenamiento
 def sortdate(catalog, size, itera):
